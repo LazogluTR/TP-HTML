@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            color: #000;
+        }
+        h1 {
+            font-size: 22px;
+            color: white;
+            background-color: #365F91;
+            padding: 10px;
+        }
+        h2 {
+            font-size: 20px;
+            color: #000;
+            margin-top: 20px;
+        }
+        h3 {
+            font-size: 18px;
+            margin-top: 15px;
+        }
+        p {
+            font-size: 14px;
+            text-align: justify;
+        }
+        ul {
+            margin-left: 20px;
+            font-size: 14px;
+        }
+        blockquote {
+            margin-left: 20px;
+            font-style: italic;
+            color: #555555;
+        }
+        .code {
+            font-family: "Courier New", monospace;
+            background-color: #ecee46;
+            padding: 5px;
+            border: 1px solid #ddd;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h1>EXERCICE 2 :</h1>
+    <p>Soit le texte suivant. Il s'agit de d&eacute;finir le contenu HTML de chaque partie de ce texte. Par exemple la premi&egrave;re ligne sera une balise &lt;h1&gt;, la 2<sup>&egrave;me</sup> une balise &lt;h2&gt;. Faire de m&ecirc;me pour l'ensemble du texte. Pour cela copier-coller le texte dans NetBeans.</p>
+
+    <h2>1. Le langage SQL</h2>
+    <h3>1.1. D&eacute;finition</h3>
+    <p>Le langage <strong>SQL</strong> (Structured Query Language ou Langage de requ&ecirc;tes structur&eacute;) est un langage comprenant &agrave; lui seul l'ensemble des ordres n&eacute;cessaires &agrave; la cr&eacute;ation et &agrave; la gestion d'une base de donn&eacute;es relationnelle. Il a &eacute;t&eacute; cr&eacute;&eacute; en 1986 et est en fait l'aboutissement de plusieurs langages (Sequel en 1977, System/R, ...) cr&eacute;&eacute;s depuis l'apparition du mod&egrave;le relationnel en 1970 (le mod&egrave;le relationnel a &eacute;t&eacute; invent&eacute; par Mr Codd, un math&eacute;maticien de chez IBM). L'utilisation du langage SQL suppose obligatoirement que les donn&eacute;es aient &eacute;t&eacute; d&eacute;finies selon le mod&egrave;le relationnel au sein d'un SGBDR (Oracle &copy;, SQLServer, mySQL, PostgreSQL...).</p>
+
+    <h3>1.2. Les diff&eacute;rentes normes utilis&eacute;es</h3>
+    <p>Il existe aujourd'hui plusieurs normes relatives &agrave; l'utilisation du <strong>langage SQL</strong>. La diff&eacute;rence entre ces deux normes se situe principalement dans l'&eacute;criture des jointures et dans l'ajout de fonctionnalit&eacute;s :</p>
+    <ul>
+        <li>La norme <strong>SQL 89</strong> qui est encore tr&egrave;s utilis&eacute;e actuellement.</li>
+        <li>La norme <strong>SQL 92</strong>.</li>
+        <li>Aujourd'hui <strong>SQL 2011</strong>.</li>
+    </ul>
+    <p>Bien qu'il existe des normes il peut y avoir des diff&eacute;rences entre SGBDR dans la syntaxe. Ainsi on peut lire sur le site de <strong>PostgreSQL</strong> :</p>
+    <blockquote>
+        &laquo; Le d&eacute;veloppement de <strong>PostgreSQL</strong> respecte le standard en vigueur, tant que celui-ci ne s'oppose pas aux fonctionnalit&eacute;s traditionnelles ou au bon sens... &raquo;
+    </blockquote>
+    <blockquote>
+        &laquo; SQL-92 d&eacute;finit trois niveaux de conformit&eacute; : basique (<em>ENTRY</em>), interm&eacute;diaire (<em>INTERMEDIATE</em>) et compl&egrave;te (<em>FULL</em>). La majorit&eacute; des syst&egrave;mes de gestion de bases de donn&eacute;es se pr&eacute;tendaient compatibles au standard SQL d&egrave;s lors qu'ils se conformaient au niveau Entry &raquo;
+    </blockquote>
+
+    <h2>2. Le mod&egrave;le de donn&eacute;es utilis&eacute; dans le cours</h2>
+    <h3>2.1. Le mod&egrave;le entit&eacute;-association (ou MCD) d'un &eacute;tablissement hospitalier</h3>
+    <h3>2.2. Le mod&egrave;le relationnel (ou MRD) d'un &eacute;tablissement hospitalier</h3>
+    <h3>2.3. La description textuelle des tables utilis&eacute;es</h3>
+    <ul>
+        <li><span class="code">fonction personnel</span> (<span class="code">code_fonction</span>, <span class="code">libelle_fonction</span>)<br>
+        <strong>Cl&eacute; primaire :</strong> <span class="code">code_fonction</span></li>
+        <li><span class="code">service</span> (<span class="code">num_service</span>, <span class="code">libelle_service</span>, <span class="code">capacite_accueil</span>, <span class="code">date_ouverture</span>)<br>
+        <strong>Cl&eacute; primaire :</strong> <span class="code">num_service</span></li>
+    </ul>
+</body>
+</html>
