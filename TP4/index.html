@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil TP4</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-image: url('wallpaper.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .image_section {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .img_hcj {
+            width: 200px;
+            height: 220px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        
+        .img_hcj:hover {
+            transform: scale(1.2) rotate(10deg);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .texte_description p {
+            font-size: 1.2em;
+            margin-top: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+
+        .btn_retour {
+            padding: 10px 20px;
+            background-color: #000000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-bottom: 20px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .btn_retour:hover {
+            background-color: #0056b3;
+            transform: scale(1.1);
+        }
+
+        .btn_retour:active {
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body>
+    <div class="page_index">
+        <button class="btn_retour" onclick="window.location.href='../index.html';">Retour à l'accueil</button>
+        <h1 class="accueil_title">Accueil TP4</h1>
+        <section class="image_section">
+            <a href="Menu_HTML.html">
+                <img class="img_hcj" src="html.png" alt="HTML">
+            </a>
+            <a href="coursCSS.html">
+                <img class="img_hcj" src="css.png" alt="CSS">
+            </a>
+            <a href="coursJS.html">
+                <img class="img_hcj" src="javascript.png" alt="JavaScript">
+            </a>
+        </section>
+        <section class="description_cours">
+            <div class="texte_description">
+                <p>Voici mes exercices du TP4-Liens</p>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
