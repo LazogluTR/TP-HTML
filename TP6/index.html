@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercices Tableaux</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-image: url('wallpaper.jpg');
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: white;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background: rgba(0, 0, 0, 0.8);
+        }
+        th, td {
+            border: 1px solid white;
+            padding: 10px;
+        }
+        th {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        a {
+            color: lightblue;
+        }
+        img {
+            width: 50px;
+            cursor: pointer;
+        }
+        button {
+            margin: 20px;
+            padding: 10px;
+            background: black;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="window.location.href='../index.html'">Retour à l'accueil</button>
+    
+    <h1>Exercice 1 : Tableau de base</h1>
+    <table>
+        <tr>
+            <th>Vacances</th>
+            <th class="zone-a">Zone A</th>
+            <th class="zone-b">Zone B</th>
+            <th class="zone-c">Zone C</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Académies de Besançon, Bordeaux, Clermont-Ferrand, Dijon, Grenoble, Limoges, Lyon, Poitiers</td>
+            <td>Académies d'Aix-Marseille, Amiens, Lille, Nancy-Metz, Nantes, Nice, Normandie, Orléans-Tours, Reims, Rennes, Strasbourg</td>
+            <td>Académies de Créteil, Montpellier, Paris, Toulouse, Versailles</td>
+        </tr>
+        <tr>
+            <td>Prérentrée des enseignants</td>
+            <td colspan="3">Reprise des cours : vendredi 1er septembre 2017</td>
+        </tr>
+        <tr>
+            <td>Rentrée scolaire des élèves</td>
+            <td colspan="3">Reprise des cours : lundi 4 septembre 2017</td>
+        </tr>
+        <tr>
+            <td>Vacances de la Toussaint</td>
+            <td colspan="3">Fin des cours : samedi 21 octobre 2017<br>Reprise des cours : lundi 6 novembre 2017</td>
+        </tr>
+        <tr>
+            <td>Vacances de Noël</td>
+            <td colspan="3">Fin des cours : samedi 23 décembre 2017<br>Reprise des cours : lundi 8 janvier 2018</td>
+        </tr>
+        <tr>
+            <td>Vacances d'hiver</td>
+            <td>Fin des cours : samedi 10 février 2018<br>Reprise des cours : lundi 26 février 2018</td>
+            <td>Fin des cours : samedi 24 février 2018<br>Reprise des cours : lundi 12 mars 2018</td>
+            <td>Fin des cours : samedi 17 février 2018<br>Reprise des cours : lundi 5 mars 2018</td>
+        </tr>
+        <tr>
+            <td>Vacances de printemps</td>
+            <td>Fin des cours : samedi 7 avril 2018<br>Reprise des cours : lundi 23 avril 2018</td>
+            <td>Fin des cours : samedi 21 avril 2018<br>Reprise des cours : lundi 7 mai 2018</td>
+            <td>Fin des cours : samedi 14 avril 2018<br>Reprise des cours : lundi 30 avril 2018</td>
+        </tr>
+        <tr>
+            <td>Vacances d'été</td>
+            <td colspan="3">Fin des cours : samedi 7 juillet 2018</td>
+        </tr>
+    </table>
+    
+    <h1>Exercice 2 : Tableaux des langages serveur</h1>
+    <table>
+        <caption>Langages de script côté serveur</caption>
+        <tr>
+            <th>Logo</th>
+            <th>Non abrégé</th>
+            <th>Nom complet</th>
+            <th>Année de sortie</th>
+            <th>Site web</th>
+            <th>Exemple de code</th>
+        </tr>
+        <tr>
+            <td><a href="PHP.png"><img src="PHP.png" width="50"></a></td>
+            <td>PHP</td>
+            <td>Hypertext Preprocessor</td>
+            <td>1995</td>
+            <td><a href="https://www.php.net" title="Site officiel de PHP">PHP.net</a></td>
+            <td><code>&lt;?php echo "Hello, World!"; ?&gt;</code></td>
+        </tr>
+        <tr>
+            <td><a href="JSP.jpg"><img src="JSP.jpg" width="50"></a></td>
+            <td>JSP</td>
+            <td>Java Server Pages</td>
+            <td>1999</td>
+            <td><a href="https://www.oracle.com/java/" title="Site officiel de JSP">Oracle Java</a></td>
+            <td><code>&lt;% out.print("Hello, World!"); %&gt;</code></td>
+        </tr>
+        <tr>
+            <td><a href="ASP.png"><img src="ASP.png" width="50"></a></td>
+            <td>ASP</td>
+            <td>Active Server Pages</td>
+            <td>1996</td>
+            <td><a href="https://dotnet.microsoft.com/" title="Site officiel de ASP">Microsoft .NET</a></td>
+            <td><code>&lt;% Response.Write("Hello, World!") %&gt;</code></td>
+        </tr>
+        <tr>
+            <td><a href="RUBY.png"><img src="RUBY.png" width="50"></a></td>
+            <td>Ruby</td>
+            <td>Ruby on Rails</td>
+            <td>2004</td>
+            <td><a href="https://rubyonrails.org/" title="Site officiel de Ruby">Ruby on Rails</a></td>
+            <td><code>puts "Hello, World!"</code></td>
+        </tr>
+        <tr>
+            <td><a href="PERL.png"><img src="PERL.png" width="50"></a></td>
+            <td>Perl</td>
+            <td>Practical Extraction and Report Language</td>
+            <td>1987</td>
+            <td><a href="https://www.perl.org/" title="Site officiel de Perl">Perl.org</a></td>
+            <td><code>print "Hello, World!\n";</code></td>
+        </tr>
+        <tr>
+            <td><a href="PYTHON.png"><img src="PYTHON.png" width="50"></a></td>
+            <td>Python</td>
+            <td>Python</td>
+            <td>1991</td>
+            <td><a href="https://www.python.org/" title="Site officiel de Python">Python.org</a></td>
+            <td><code>print("Hello, World!")</code></td>
+        </tr>
+    </table>
+    
+    <h1>Exercice 3 : Calendrier Avril 2024</h1>
+    <table>
+        <caption>Calendrier Avril 2024</caption>
+        <tr>
+            <th>Lun</th><th>Mar</th><th>Mer</th><th>Jeu</th><th>Ven</th><th>Sam</th><th>Dim</th>
+        </tr>
+        <tr>
+            <td></td><td></td><td></td><td></td><td>1</td><td>2</td><td>3</td>
+        </tr>
+        <tr>
+            <td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td>
+        </tr>
+        <tr>
+            <td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td>
+        </tr>
+        <tr>
+            <td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td>
+        </tr>
+        <tr>
+            <td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td></td>
+        </tr>
+    </table>
+</body>
+</html>

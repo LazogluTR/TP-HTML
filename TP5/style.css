@@ -1,38 +1,36 @@
-/* ========== Dimensions globales ========== */
 html, body {
     width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
-    /* Limite de redimensionnement pour conserver un visuel lisible */
+    
     min-width: 600px;
     font-family: Arial, sans-serif;
   }
   
-  /* Titre */
+  
   h1 {
     text-align: center;
     margin: 20px 0;
   }
   
-  /* ========== Grille principale ========== */
+  
   #memory-board {
     width: 80%;
     margin: 0 auto;
     display: grid;
-    /* 5 colonnes, 4 lignes */
+    
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 10px;
     justify-items: center;
     align-items: center;
   }
   
-  /* ========== Carte (parent) ========== */
   .card-container {
-    /* Optionnel : forcer la taille pour uniformiser */
+    
     width: 120px;
     height: 150px;
-    position: relative; /* Utile si on veut superposer des éléments */
+    position: relative; 
     background-color: #ddd;
     border: 1px solid #333;
     cursor: pointer;
@@ -41,21 +39,19 @@ html, body {
   }
   
   .card-container:hover {
-    background-color: #bbb; /* Changement de couleur au survol */
+    background-color: #bbb; 
   }
   
-  /* ========== L'image dans la carte ========== */
   .card-container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* Par défaut on rend l’image transparente (= cachée), puis on l’affichera sur clic */
-    opacity: 0.05;
+    
+    opacity: 0.01;
     transition: opacity 0.3s;
   }
   
-  /* ========== État "retourné" ========== */
   .card-container.revealed img {
-    opacity: 1; /* On rend l'image visible */
+    opacity: 1;
   }
   
