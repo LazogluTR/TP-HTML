@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcul de Surface & Devis TP8</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('../wallpaper.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .nav-buttons button {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .nav-buttons button:hover {
+            background: rgba(255, 255, 255, 0.5);
+            color: black;
+        }
+        .back-home {
+            margin-top: 20px;
+        }
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        table, th, td {
+            border: 1px solid white;
+            padding: 10px;
+        }
+        button {
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: rgba(255, 255, 255, 0.6);
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Calcul de Surface & Devis TP8</h1>
+        <div class="nav-buttons">
+            <button onclick="calculerRectangle()">Calculer Surface Rectangle</button>
+            <button onclick="calculerDevis()">Calculer Devis Béton</button>
+            <button onclick="window.location.href='../index.html'">Accueil</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <body>
+        <div class="header">
+            <h1>Calcul de Surface & Devis TP8</h1>
+            <div class="nav-buttons">
+                <button onclick="calculerRectangle()">Calculer Surface Rectangle</button>
+                <button onclick="calculerDevis()">Calculer Devis Béton</button>
+                <button onclick="window.location.href='index.html'" class="back-home">Accueil</button>
+            </div>
+        </div>
+    
+        <!-- Insère le script ici, juste avant </body> -->
+        <script>
+            function calculerRectangle() {
+                let x = parseInt(prompt("Entrez la longueur du rectangle :"));
+                let y = parseInt(prompt("Entrez la largeur du rectangle :"));
+    
+                if (isNaN(x) || isNaN(y) || x <= 0 || y <= 0) {
+                    alert("Veuillez entrer des valeurs valides !");
+                    return;
+                }
+    
+                let surface = x * y;
+                alert("Surface du rectangle : " + surface);
+                console.log("Surface du rectangle : " + surface);
+            }
+    
+            function calculerDevis() {
+                let epaisseur = parseFloat(prompt("Entrez l'épaisseur de la dalle en cm (15-35) :"));
+                while (epaisseur < 15 || epaisseur > 35 || isNaN(epaisseur)) {
+                    epaisseur = parseFloat(prompt("Valeur invalide. Entrez l'épaisseur de la dalle en cm (15-35) :"));
+                }
+    
+                let surfacePlancher = parseFloat(prompt("Entrez la surface de la dalle en m² :"));
+                while (surfacePlancher <= 0 || isNaN(surfacePlancher)) {
+                    surfacePlancher = parseFloat(prompt("Valeur invalide. Entrez la surface de la dalle en m² :"));
+                }
+    
+                let volumeBeton = (epaisseur / 100) * surfacePlancher;
+                let tonnesCiment = (volumeBeton * 350) / 1000;
+                let nbCamions = Math.ceil(volumeBeton / 9);
+                let prixHT = volumeBeton * 91 + nbCamions * 140;
+                let prixTTC = prixHT * 1.2;
+    
+                alert(`Volume de béton : ${volumeBeton.toFixed(2)} m³\nTonnes de ciment : ${tonnesCiment.toFixed(2)} t\nNombre de camions : ${nbCamions}\nPrix HT : ${prixHT.toFixed(2)} €\nPrix TTC : ${prixTTC.toFixed(2)} €`);
+            }
+        </script>
+</body>
+</html>
