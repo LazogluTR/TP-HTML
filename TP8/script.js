@@ -10,7 +10,7 @@ if (confirm("Voulez-vous utiliser ces valeurs ?")) {
     console.log("Surface du rectangle : " + surface);
     alert("Surface du rectangle : " + surface);
 } else {
-    location.reload(); // Recharge la page pour redemander les valeurs
+    location.reload();
 }
 
 // Exercice 3
