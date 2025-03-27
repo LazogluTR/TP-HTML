@@ -3,127 +3,162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calcul de Surface & Devis TP8</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: url('../wallpaper.jpg') no-repeat center center fixed;
-            background-size: cover;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-        .header h1 {
-            margin: 0;
-            font-size: 24px;
-        }
-        .nav-buttons {
-            display: flex;
-            gap: 10px;
-        }
-        .nav-buttons button {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        .nav-buttons button:hover {
-            background: rgba(255, 255, 255, 0.5);
-            color: black;
-        }
-        .back-home {
-            margin-top: 20px;
-        }
-        table {
-            margin: 20px auto;
-            border-collapse: collapse;
-            background: rgba(0, 0, 0, 0.6);
-        }
-        table, th, td {
-            border: 1px solid white;
-            padding: 10px;
-        }
-        button {
-            background: rgba(0, 0, 0, 0.6);
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            margin-top: 20px;
-            border-radius: 5px;
-        }
-        button:hover {
-            background: rgba(255, 255, 255, 0.6);
-            color: black;
-        }
-    </style>
+    <title>Exercices JavaScript</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="header">
-        <h1>Calcul de Surface & Devis TP8</h1>
-        <div class="nav-buttons">
-            <button onclick="calculerRectangle()">Calculer Surface Rectangle</button>
-            <button onclick="calculerDevis()">Calculer Devis Béton</button>
-            <button onclick="window.location.href='../index.html'">Accueil</button>
-        </div>
+
+    <div id="header">
+        <h1>Exercices JavaScript TP8</h1>
+        <button id="accueilButton" onclick="window.location.href='../index.html'">Revenir à l'accueil</button>
     </div>
-    <script src="script.js"></script>
-    <body>
-        <div class="header">
-            <h1>Calcul de Surface & Devis TP8</h1>
-            <div class="nav-buttons">
-                <button onclick="calculerRectangle()">Calculer Surface Rectangle</button>
-                <button onclick="calculerDevis()">Calculer Devis Béton</button>
-                <button onclick="window.location.href='index.html'" class="back-home">Accueil</button>
-            </div>
-        </div>
+
     
-        
-        <script>
-            function calculerRectangle() {
-                let x = parseInt(prompt("Entrez la longueur du rectangle :"));
-                let y = parseInt(prompt("Entrez la largeur du rectangle :"));
+    <h2>Exercice 1 : Calcul de la surface d'un rectangle</h2>
+    <button onclick="calculerSurface()">Calculer la surface</button>
+
+    <h2>Exercice 2 : Confirmation de la saisie</h2>
+    <button onclick="confirmationSaisie()">Valider la saisie</button>
+
+    <h2>Exercice 3 : Validation des valeurs</h2>
+    <button onclick="validationSaisie()">Vérifier les valeurs</button>
+
+    <h2>Exercice 4 : Affichage dans la page web</h2>
+    <button onclick="afficherSurfaceDansPage()">Afficher dans la page</button>
+
+    <h2>Exercice 5 : Calcul via la fonction rect()</h2>
+    <button onclick="rect()">Calcul via fonction</button>
+
+    <h2>Exercice 6 : Table de multiplication</h2>
+    <button onclick="tableMultiplication()">Afficher la table de multiplication</button>
+
+    <h1>Exercice 7 et 8 : Calcul du devis béton</h1>
+
+    <form id="formDevis">
+        <label for="surface">Surface (m²) :</label>
+        <input type="number" id="surface" required>
+
+        <label for="epaisseur">Épaisseur (cm) :</label>
+        <input type="number" id="epaisseur" min="15" max="35" required>
+
+        <button type="button" onclick="calculDevis()">Obtenir le devis</button>
+    </form>
+
     
-                if (isNaN(x) || isNaN(y) || x <= 0 || y <= 0) {
-                    alert("Veuillez entrer des valeurs valides !");
-                    return;
-                }
-    
+    <div id="devisResult" style="visibility:hidden;">
+        <h2>Devis béton</h2>
+        <p id="volume"></p>
+        <p id="poids"></p>
+        <p id="camions"></p>
+        <p id="prixHT"></p>
+        <p id="prixTransport"></p>
+        <p id="prixTTC"></p>
+    </div>
+
+
+    <script>
+        // Exercice 1
+        function calculerSurface() {
+            let x = prompt("Entrez la largeur (X) du rectangle:");
+            let y = prompt("Entrez la longueur (Y) du rectangle:");
+            x = parseInt(x);
+            y = parseInt(y);
+            let surface = x * y;
+            console.log("Surface: " + surface);
+            alert("La surface du rectangle est : " + surface);
+        }
+
+        // Exercice 2
+        function confirmationSaisie() {
+            let x = prompt("Entrez la largeur (X) du rectangle:");
+            let y = prompt("Entrez la longueur (Y) du rectangle:");
+            let confirmation = confirm("Voulez-vous utiliser les valeurs saisies : X=" + x + ", Y=" + y + "?");
+            if (confirmation) {
                 let surface = x * y;
-                alert("Surface du rectangle : " + surface);
-                console.log("Surface du rectangle : " + surface);
+                alert("La surface du rectangle est : " + surface);
+            } else {
+                confirmationSaisie();
             }
-    
-            function calculerDevis() {
-                let epaisseur = parseFloat(prompt("Entrez l'épaisseur de la dalle en cm (15-35) :"));
-                while (epaisseur < 15 || epaisseur > 35 || isNaN(epaisseur)) {
-                    epaisseur = parseFloat(prompt("Valeur invalide. Entrez l'épaisseur de la dalle en cm (15-35) :"));
+        }
+
+        // Exercice 3
+        function validationSaisie() {
+            let x, y;
+            do {
+                x = prompt("Entrez la largeur (X) du rectangle:");
+                y = prompt("Entrez la longueur (Y) du rectangle:");
+                if (isNaN(x) || isNaN(y) || x < 0 || y < 0) {
+                    alert("Veuillez entrer des valeurs valides.");
                 }
-    
-                let surfacePlancher = parseFloat(prompt("Entrez la surface de la dalle en m² :"));
-                while (surfacePlancher <= 0 || isNaN(surfacePlancher)) {
-                    surfacePlancher = parseFloat(prompt("Valeur invalide. Entrez la surface de la dalle en m² :"));
-                }
-    
-                let volumeBeton = (epaisseur / 100) * surfacePlancher;
-                let tonnesCiment = (volumeBeton * 350) / 1000;
-                let nbCamions = Math.ceil(volumeBeton / 9);
-                let prixHT = volumeBeton * 91 + nbCamions * 140;
-                let prixTTC = prixHT * 1.2;
-    
-                alert(`Volume de béton : ${volumeBeton.toFixed(2)} m³\nTonnes de ciment : ${tonnesCiment.toFixed(2)} t\nNombre de camions : ${nbCamions}\nPrix HT : ${prixHT.toFixed(2)} €\nPrix TTC : ${prixTTC.toFixed(2)} €`);
+            } while (isNaN(x) || isNaN(y) || x < 0 || y < 0);
+            let surface = x * y;
+            alert("La surface du rectangle est : " + surface);
+        }
+
+        // Exercice 4
+        function afficherSurfaceDansPage() {
+            let x = prompt("Entrez la largeur (X) du rectangle:");
+            let y = prompt("Entrez la longueur (Y) du rectangle:");
+            x = parseInt(x);
+            y = parseInt(y);
+            let surface = x * y;
+            document.write("La surface du rectangle est : " + surface);
+        }
+
+        // Exercice 5
+        function rect() {
+            let x = prompt("Entrez la largeur (X) du rectangle:");
+            let y = prompt("Entrez la longueur (Y) du rectangle:");
+            x = parseInt(x);
+            y = parseInt(y);
+            let surface = calculSurface(x, y);
+            alert("La surface du rectangle est : " + surface);
+        }
+
+        function calculSurface(x, y) {
+            return x * y;
+        }
+
+        // Exercice 6 
+        function tableMultiplication() {
+            let n = prompt("Entrez le nombre pour la table de multiplication:");
+            n = parseInt(n);
+            let tableHTML = "<table border='1'><tr><th>Multiplication</th><th>Résultat</th></tr>";
+            for (let i = 1; i <= 10; i++) {
+                tableHTML += "<tr><td>" + n + " x " + i + "</td><td>" + (n * i) + "</td></tr>";
             }
-        </script>
+            tableHTML += "</table>";
+            document.body.innerHTML += tableHTML;
+        }
+
+        function calculDevis() {
+            
+            let surface = parseFloat(document.getElementById('surface').value);
+            let epaisseur = parseFloat(document.getElementById('epaisseur').value);
+
+            
+            let volume = surface * (epaisseur / 100);
+            let poids = volume * 350;
+
+            
+            let camions = Math.ceil(volume / 9); 
+
+            
+            let prixHT = volume * 91;
+            let prixTransport = camions * 140;
+            let prixTTC = (prixHT + prixTransport) * 1.2;
+
+            
+            document.getElementById("volume").innerText = "Volume : " + volume.toFixed(2) + " m³";
+            document.getElementById("poids").innerText = "Poids du ciment : " + poids.toFixed(2) + " kg";
+            document.getElementById("camions").innerText = "Nombre de camions : " + camions;
+            document.getElementById("prixHT").innerText = "Prix HT : " + prixHT.toFixed(2) + "€";
+            document.getElementById("prixTransport").innerText = "Prix Transport : " + prixTransport.toFixed(2) + "€";
+            document.getElementById("prixTTC").innerText = "Prix TTC : " + prixTTC.toFixed(2) + "€";
+
+            
+            document.getElementById("devisResult").style.visibility = "visible";
+        }
+    </script>
 </body>
 </html>
