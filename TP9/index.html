@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>TP9 - Interactions dynamiques</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header-bar">
+        <a href="../index.html" class="btn-accueil">Accueil</a>
+        <h1 class="main-title">TP9 – Interactions dynamiques</h1>
+      </div>
+
+    <section>
+        <h1>Exercice 1 : Info-bulles</h1>
+        <p>
+          Le <span class="mot" data-def="Langage de programmation côté serveur.">PHP</span> est souvent utilisé pour créer des sites dynamiques. 
+          De nombreux développeurs l’associent avec <span class="mot" data-def="Langage de structuration de pages web.">HTML</span> et 
+          <span class="mot" data-def="Langage de style utilisé pour mettre en forme les pages web.">CSS</span> pour construire des interfaces modernes. 
+          On peut également ajouter du <span class="mot" data-def="Langage de script exécuté dans le navigateur.">JavaScript</span> pour interagir avec l’utilisateur. 
+          Les bases de données comme <span class="mot" data-def="Système de gestion de base de données relationnelle.">MySQL</span> sont essentielles pour stocker les données d’un site.
+        </p>
+        <div id="popup" class="popup"></div>
+      </section>
+
+      <section class="formulaire-visite">
+        <h1>Formulaire de Visite</h1>
+        <form id="form">
+          <label>Nom :</label>
+          <input id="nom" type="text" required>
+      
+          <label>Prénom :</label>
+          <input id="prenom" type="text" required>
+      
+          <label>Études suivies :</label>
+          <select id="etudes">
+            <option>Bac pro</option>
+            <option>STI</option>
+            <option>STMG</option>
+            <option>Général</option>
+          </select>
+      
+          <button type="submit">Valider</button>
+        </form>
+      
+        <h2>Liste des Visiteurs</h2>
+        <table id="tableau">
+          <tr><th>Nom</th><th>Prénom</th><th>Études</th></tr>
+        </table>
+      </section>
+
+    <section class="compte-rebours">
+        <h1>Exercice 3 : Compte à rebours</h1>
+        <div id="chrono" class="chrono-box"></div>
+      </section>
+      
+
+      <section class="calendrier-section">
+        <h1>Calendrier Paramétrable</h1>
+      
+        <form id="form-calendrier">
+          <label>Premier jour du mois (1-7) :</label>
+          <input id="jour" type="number" min="1" max="7" required>
+      
+          <label>Mois (1-12) :</label>
+          <input id="mois" type="number" min="1" max="12" required>
+      
+          <label>Année :</label>
+          <input id="annee" type="number" required>
+      
+          <label>Taille :</label>
+          <select id="taille">
+            <option value="petit">Petit</option>
+            <option value="moyen">Moyen</option>
+            <option value="grand">Grand</option>
+          </select>
+      
+          <label>Couleur de l'en-tête :</label>
+          <input type="color" id="couleurHeader">
+      
+          <label>Couleur des jours :</label>
+          <input type="color" id="couleurJours">
+      
+          <button type="submit">Générer le Calendrier</button>
+        </form>
+      
+        <div id="calendrier"></div>
+      </section>
+      
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
