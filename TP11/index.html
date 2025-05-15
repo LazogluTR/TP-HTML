@@ -1,219 +1,86 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <title>🔥 PING PONG ENFER V2</title>
-  <style>
-    html, body {
-      margin: 0;
-      overflow: hidden;
-      background: radial-gradient(circle at center, #330000 0%, #000000 100%);
-      font-family: 'Arial Black', sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page d'Accueil</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: white;
+            text-align: center;
+            background-image: url('../wallpaper.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
 
-    #score {
-      text-align: center;
-      font-size: 26px;
-      color: #fff;
-      margin: 15px 0;
-      text-shadow: 0 0 10px red, 0 0 20px orange;
-      animation: pulse 1.2s infinite ease-in-out;
-    }
+        header {
+            background: rgba(0, 0, 0, 0.7); /* Fond semi-transparent */
+            padding: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
 
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
 
-    canvas {
-      display: block;
-      margin: auto;
-      background: repeating-linear-gradient(
-        45deg,
-        #1a0000,
-        #1a0000 10px,
-        #330000 10px,
-        #330000 20px
-      );
-      box-shadow: 0 0 80px red inset;
-    }
-  </style>
+        p {
+            margin: 20px 0;
+            font-size: 1.2em;
+            color: #f0f0f0;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #000000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            margin-top: 30px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #f0f0f0;
+            padding: 10px 0;
+            font-size: 0.9em;
+        }
+    </style>
 </head>
 <body>
-  <div id="score">Chargement...</div>
-  <canvas id="game" width="800" height="500"></canvas>
-
-<script>
-const canvas = document.getElementById("game");
-const ctx = canvas.getContext("2d");
-const scoreDisplay = document.getElementById("score");
-
-const paddleWidth = 10;
-let basePaddleHeight = 100;
-let player1Y = 200, player2Y = 200;
-let player1Speed = 7, player2Speed = 7;
-let paddleHeight1 = basePaddleHeight, paddleHeight2 = basePaddleHeight;
-
-let ballX = 400, ballY = 250, ballRadius = 10;
-let ballSpeedX = 5, ballSpeedY = 4;
-
-let score1 = 0, score2 = 0;
-let wait = false;
-
-let fireBall = 0, boostP1 = 0, slowBall = 0, shrinkP1 = 0;
-
-let cooldown = { w: 0, x: 0, m: 0, l: 0 };
-
-document.addEventListener("keydown", (e) => {
-  const key = e.key.toLowerCase();
-  if (key === "z") up1 = true;
-  if (key === "s") down1 = true;
-  if (key === "arrowup") up2 = true;
-  if (key === "arrowdown") down2 = true;
-
-  if (key === "w" && cooldown.w <= 0) {
-    boostP1 = 300;
-    cooldown.w = 600;
-  }
-  if (key === "x" && cooldown.x <= 0) {
-    fireBall = 300;
-    cooldown.x = 600;
-  }
-  if (key === "m" && cooldown.m <= 0) {
-    slowBall = 300; // réactive même si déjà lent
-    cooldown.m = 600;
-  }
-  if (key === "l" && cooldown.l <= 0) {
-    shrinkP1 = 300;
-    cooldown.l = 600;
-  }
-});
-
-document.addEventListener("keyup", (e) => {
-  const key = e.key.toLowerCase();
-  if (key === "z") up1 = false;
-  if (key === "s") down1 = false;
-  if (key === "arrowup") up2 = false;
-  if (key === "arrowdown") down2 = false;
-});
-
-let up1 = false, down1 = false, up2 = false, down2 = false;
-
-function resetBall(dir) {
-  ballX = 400;
-  ballY = 250;
-  ballSpeedX = dir * 5;
-  ballSpeedY = 4;
-  wait = true;
-  fireBall = 0;
-  slowBall = 0;
-  setTimeout(() => wait = false, 800);
-}
-
-function updateScore() {
-  scoreDisplay.textContent =
-    `J1 : ${score1} [W:${Math.floor(cooldown.w/60)}s][X:${Math.floor(cooldown.x/60)}s] ` +
-    "| " +
-    `J2 : ${score2} [M:${Math.floor(cooldown.m/60)}s][L:${Math.floor(cooldown.l/60)}s]`;
-}
-
-function gameLoop() {
-  // ENFER STYLE
-  canvas.style.background = `radial-gradient(circle at center, rgba(${80 + Math.random()*100},0,0,1), black)`;
-  scoreDisplay.style.transform = `rotate(${Math.sin(Date.now()/300)*1.5}deg)`;
-
-  if (!wait) {
-    let speedBoost = boostP1 > 0 ? 12 : player1Speed;
-    let ballMultiplier = fireBall > 0 ? 1.5 : (slowBall > 0 ? 0.5 : 1);
-
-    paddleHeight1 = shrinkP1 > 0 ? 60 : basePaddleHeight;
-
-    // Mouvements
-    if (up1 && player1Y > 0) player1Y -= speedBoost;
-    if (down1 && player1Y + paddleHeight1 < 500) player1Y += speedBoost;
-    if (up2 && player2Y > 0) player2Y -= player2Speed;
-    if (down2 && player2Y + paddleHeight2 < 500) player2Y += player2Speed;
-
-    // Balle
-    ballX += ballSpeedX * ballMultiplier;
-    ballY += ballSpeedY * ballMultiplier;
-
-    // rebond haut/bas
-    if (ballY - ballRadius <= 0 || ballY + ballRadius >= 500) {
-      ballSpeedY *= -1;
-    }
-
-    // Collisions avec hitbox améliorée
-    if (
-      ballX - ballRadius <= paddleWidth &&
-      ballY >= player1Y && ballY <= player1Y + paddleHeight1
-    ) {
-      ballSpeedX *= -1.1;
-      ballX = paddleWidth + ballRadius + 1;
-    }
-
-    if (
-      ballX + ballRadius >= 800 - paddleWidth &&
-      ballY >= player2Y && ballY <= player2Y + paddleHeight2
-    ) {
-      ballSpeedX *= -1.1;
-      ballX = 800 - paddleWidth - ballRadius - 1;
-    }
-
-    // Buts
-    if (ballX < 0) {
-      score2++;
-      updateScore();
-      resetBall(1);
-    }
-    if (ballX > 800) {
-      score1++;
-      updateScore();
-      resetBall(-1);
-    }
-  }
-
-  // Durée des effets
-  if (boostP1 > 0) boostP1--;
-  if (fireBall > 0) fireBall--;
-  if (slowBall > 0) slowBall--;
-  if (shrinkP1 > 0) shrinkP1--;
-
-  cooldown.w = Math.max(0, cooldown.w - 1);
-  cooldown.x = Math.max(0, cooldown.x - 1);
-  cooldown.m = Math.max(0, cooldown.m - 1);
-  cooldown.l = Math.max(0, cooldown.l - 1);
-
-  updateScore();
-
-  // Dessin
-  ctx.clearRect(0, 0, 800, 500);
-
-  // Filet
-  ctx.fillStyle = `rgb(${255*Math.random()},${50+Math.random()*100},0)`;
-  for (let i = 0; i < 500; i += 20)
-    ctx.fillRect(400, i, 2, 10);
-
-  // Raquettes
-  ctx.fillStyle = "white";
-  ctx.fillRect(0, player1Y, paddleWidth, paddleHeight1);
-  ctx.fillRect(790, player2Y, paddleWidth, paddleHeight2);
-
-  // Balle
-  ctx.beginPath();
-  ctx.arc(ballX, ballY, ballRadius, 0, Math.PI * 2);
-  ctx.fillStyle = fireBall > 0 ? "orange" : "white";
-  ctx.shadowBlur = fireBall > 0 ? 20 : 0;
-  ctx.shadowColor = "red";
-  ctx.fill();
-  ctx.shadowBlur = 0;
-
-  requestAnimationFrame(gameLoop);
-}
-
-updateScore();
-gameLoop();
-</script>
+    <header>
+        <h1>Bienvenue sur le TP11</h1>
+        <p>Voici les différents jeux que vous pouvez lancer ci-dessous</p>
+    </header>
+    <main>
+        <ul>
+            <li><a href="Ping Pong/index.html"><button>Ping Pong</button></a></li>
+            <li><a href="HexGl/HexGL-master/index.html"><button>HexGl</button></a></li>
+        </ul>
+    </main>
 </body>
 </html>
